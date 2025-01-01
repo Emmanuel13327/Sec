@@ -1,47 +1,21 @@
-// Import Firebase SDK
-import { initializeApp } from "https://www.gstatic.com/firebasejs/9.17.1/firebase-app.js";
-import { getFirestore, collection, addDoc, onSnapshot } from "https://www.gstatic.com/firebasejs/9.17.1/firebase-firestore.js";
+// Import the functions you need from the SDKs you need
+import { initializeApp } from "firebase/app";
+import { getAnalytics } from "firebase/analytics";
+// TODO: Add SDKs for Firebase products that you want to use
+// https://firebase.google.com/docs/web/setup#available-libraries
 
-// Firebase Config
+// Your web app's Firebase configuration
+// For Firebase JS SDK v7.20.0 and later, measurementId is optional
 const firebaseConfig = {
-  apiKey: "YOUR_API_KEY",
-  authDomain: "YOUR_AUTH_DOMAIN",
-  projectId: "YOUR_PROJECT_ID",
-  storageBucket: "YOUR_STORAGE_BUCKET",
-  messagingSenderId: "YOUR_MESSAGING_SENDER_ID",
-  appId: "YOUR_APP_ID"
+  apiKey: "AIzaSyDebgq_eOLvM0QHQ8qsDsCmhvvf_roNeVk",
+  authDomain: "securitymanagement-b0d8c.firebaseapp.com",
+  projectId: "securitymanagement-b0d8c",
+  storageBucket: "securitymanagement-b0d8c.firebasestorage.app",
+  messagingSenderId: "511687821192",
+  appId: "1:511687821192:web:092f8e08c27a8958a35c3d",
+  measurementId: "G-FZDRMC0RWH"
 };
 
 // Initialize Firebase
 const app = initializeApp(firebaseConfig);
-const db = getFirestore(app);
-
-// Reference Firestore Collection
-const entriesCollection = collection(db, "entries");
-
-// Form Submission
-const form = document.getElementById("entryForm");
-form.addEventListener("submit", async (e) => {
-  e.preventDefault();
-  const name = document.getElementById("name").value;
-  const checkup = document.getElementById("checkup").value;
-
-  try {
-    await addDoc(entriesCollection, { name, checkup, timestamp: new Date() });
-    form.reset();
-  } catch (error) {
-    console.error("Error adding document: ", error);
-  }
-});
-
-// Display Records in Real-Time
-const recordsList = document.getElementById("records");
-onSnapshot(entriesCollection, (snapshot) => {
-  recordsList.innerHTML = "";
-  snapshot.docs.forEach((doc) => {
-    const data = doc.data();
-    const listItem = document.createElement("li");
-    listItem.textContent = `Name: ${data.name}, Checkup: ${data.checkup}, Time: ${data.timestamp.toDateString()}`;
-    recordsList.appendChild(listItem);
-  });
-});
+const analytics = getAnalytics(app);
