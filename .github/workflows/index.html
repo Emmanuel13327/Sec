@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Security Management System</title>
+  <link rel="stylesheet" href="styles.css">
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      margin: 20px;
+    }
+
+    form {
+      margin-bottom: 20px;
+    }
+
+    label {
+      display: block;
+      margin-top: 10px;
+    }
+
+    input, textarea, button {
+      width: 100%;
+      margin-top: 5px;
+    }
+
+    ul {
+      list-style-type: none;
+      padding: 0;
+    }
+
+    li {
+      background: #f9f9f9;
+      margin: 10px 0;
+      padding: 10px;
+      border: 1px solid #ccc;
+    }
+  </style>
+</head>
+<body>
+  <h1>Security Management System</h1>
+  <form id="entryForm">
+    <label for="name">Name:</label>
+    <input type="text" id="name" required>
+    
+    <label for="checkup">Checkup Notes:</label>
+    <textarea id="checkup" required></textarea>
+    
+    <button type="submit">Submit</button>
+  </form>
+  <ul id="records"></ul>
+  
+  <!-- Import Firebase SDK -->
+  <script src="https://www.gstatic.com/firebasejs/9.17.1/firebase-app.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/9.17.1/firebase-firestore.js"></script>
+  
+  <!-- Link the external script -->
+  <script type="module" src="script.js"></script>
+</body>
+</html>
